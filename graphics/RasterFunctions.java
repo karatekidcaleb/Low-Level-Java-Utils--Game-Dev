@@ -131,11 +131,17 @@ class RasterFunctions {
 		String outputPath = "resources/output.bmp";
 		try{
 			double elapse = System.currentTimeMillis();
+			
 			byte[][][] raster = toRaster(filePath);
-			System.out.print(raster.length + " " + raster[0].length + " " + raster[0][0].length);
+			//Main functionality of file: turn any .bmp saved in memory to a raster byte array
+			
 			raster[1][1][2] = (byte)0xFF; //changes pixel colors of near bottom left pixel to Red!
 			//Try looping and creating patterns via coordinates with mathematical functions of your choice
-			//writeRasterToImage(raster, filePath, outputPath);
+			
+			writeRasterToImage(raster, filePath, outputPath); 
+			//Function which writes modified raster graphics to .bmp file in memory. 
+			//Ensure to specify the same source .bmp or a .bmp of similar dimensionality for proper write!
+			
 			System.out.println("Operation Completed in " + (System.currentTimeMillis()-elapse) + "ms");
 		}
 		catch(IOException e)
